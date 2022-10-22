@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="index.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+      integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <title>AllMovies</title>
+  </head>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+  <body onload="renderLatest()">
+    <section id="page__loader">
+      <div class="lds-ring">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    </section>
+    <section id="page__loaded">
+      <header></header>
+      <section id="latest__movies">
+        <main id="latest__movies__main">
+          <div class="responsive__container">
+            <img
+              id="main__movie__photo"
+              class="responsive__photo"
+              src=".\public\images\wp10466212-interstellar-4k-wallpapers.jpg"
+            />
+            <div id="main__information">
+              <header>
+                <h1>MOVIEX</h1>
+              </header>
+            </div>
+          </div>
+          <h2>Em Destaque</h2>
+        </main>
+      </section>
+    </section>
+    <script defer async src="index.js"></script>
+  </body>
+</html>
