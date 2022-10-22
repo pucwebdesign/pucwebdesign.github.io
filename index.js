@@ -9,11 +9,17 @@ const fetchLatestMovies = async (queryParameter) => {
 };
 
 const renderLatest = async () => {
-  const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+  /*
+  Render A lower quality video if necessary
+  
+  const isMobile = /iPhone|iPod|Android/i.test(navigator.userAgent);
   if (isMobile) {
-    console.log("ISmobile");
     // https://thumbs.gfycat.com/PleasingCornyInvisiblerail-mobile.mp4
+    const videoSource = document.getElementById("video__source");
+    videoSource.src =
+      "https://thumbs.gfycat.com/PleasingCornyInvisiblerail-mobile.mp4";
   }
+  */
 
   const getNewMovies = await fetchLatestMovies("now_playing");
   const getUpcomingMovies = await fetchLatestMovies("upcoming");
