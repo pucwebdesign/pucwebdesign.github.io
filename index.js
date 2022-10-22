@@ -9,6 +9,12 @@ const fetchLatestMovies = async (queryParameter) => {
 };
 
 const renderLatest = async () => {
+  const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+  if (isMobile) {
+    console.log("ISmobile");
+    // https://thumbs.gfycat.com/PleasingCornyInvisiblerail-mobile.mp4
+  }
+
   const getNewMovies = await fetchLatestMovies("now_playing");
   const getUpcomingMovies = await fetchLatestMovies("upcoming");
 
