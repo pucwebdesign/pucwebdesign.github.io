@@ -47,7 +47,6 @@
       </div>
     </section>
     <section id="page__loaded">
-      <header></header>
       <section id="latest__movies">
         <main id="latest__movies__main">
           <div class="responsive__container">
@@ -71,9 +70,11 @@
             <div id="main__information">
               <header>
                 <h1>MOVIEX</h1>
-                <button class="button__outline">
-                  <span>Análises</span>
-                </button>
+                <a href="/pesquisa.html">
+                  <button class="button__outline">
+                    <span>Pesquisar Filmes</span>
+                  </button>
+                </a>
               </header>
               <div class="main__caller">
                 <h2>Descubra novos filmes</h2>
@@ -82,15 +83,24 @@
                   <button class="button__filled">
                     <span>Últimos filmes</span>
                   </button>
-                  <button class="button__outline">
-                    <span>Análises</span>
-                  </button>
+                  <a href="/pesquisa.html">
+                    <button class="button__outline">
+                      <span>Pesquisar Filmes</span>
+                    </button>
+                  </a>
                 </div>
               </div>
             </div>
           </div>
-          <h2>Em Destaque</h2>
         </main>
+      </section>
+      <section class="section__container">
+        <h2 style="margin-bottom: 1em">Trailers dos últimos filmes</h2>
+        <div id="latest__movies__trailers"></div>
+      </section>
+      <section class="section__container">
+        <h2 style="margin-bottom: 1em">Filmes populares</h2>
+        <div id="popular__movie" class="grid__three__items"></div>
       </section>
     </section>
     <footer>
