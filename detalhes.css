@@ -1,0 +1,153 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;900&display=swap");
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    all: unset;
+}
+
+a:hover {
+    cursor: pointer;
+}
+
+/* DESIGN SYSTEM*/
+
+/* Typography Figma = https://www.figma.com/file/OnYonn8q4Lasd2Eq1rmflo/FILMEX-DESIGN?node-id=0%3A1*/
+
+:root {
+    --primary-color: #343b47;
+    --secundary-color: #fcd63b;
+}
+
+h1 {
+    font-size: 48px;
+    font-weight: 700;
+}
+
+h2 {
+    font-size: 36px;
+    font-weight: 500;
+}
+
+h3 {
+    font-size: 18px;
+    font-weight: 300;
+}
+
+p {
+    font-size: 12px;
+    font-weight: 500;
+}
+
+span {
+    font-size: 8px;
+    font-weight: 300;
+    display: block;
+}
+
+h1,
+h2,
+h3,
+p,
+span {
+    font-family: "Poppins", sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+button {
+    all: unset;
+    cursor: pointer;
+    width: 60px;
+    padding: 12px;
+    text-align: center;
+    height: 20px;
+}
+
+.button__outline {
+    background: rgba(217, 217, 217, 0.1);
+    color: #fff;
+    transition: 0.7s ease-in-out;
+}
+
+.button__outline:hover {
+    background: rgba(217, 217, 217, 0.7);
+}
+
+.button__filled {
+    background: rgba(217, 217, 217, 0.5);
+    color: #fff;
+    transition: 0.7s ease-in-out;
+}
+
+.button__filled:hover {
+    background: rgba(217, 217, 217, 0.8);
+}
+
+
+header {
+    display: flex;
+    justify-content: space-between;
+    margin: 4em 4em 0 4em;
+    color: #fff;
+    align-items: center;
+}
+
+body {
+    background: black;
+    min-height: 100vh;
+    width: 100%;
+}
+
+.responsive__image {
+    display: flex;
+    flex-direction: row;
+    z-index: -1;
+    width: 90%;
+    height: auto;
+    min-height: 100vh;
+    margin: 4em;
+}
+
+.resposive__image img {
+    object-fit: contain;
+    height: 100vh;
+}
+
+.responsive__image__information {
+    color: #fff;
+    max-width: 20%;
+    margin-left: 1em;
+}
+
+
+/* MEDIA QUERY */
+
+@media only screen and (max-width: 815px) {
+    header {
+        flex-direction: column;
+    }
+
+    .responsive__image {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 1em;
+        margin: 0 !important;
+        width: 100%;
+    }
+
+    .responsive__image img {
+        width: 100%;
+        height: auto;
+        margin-top: 2em;
+    }
+
+    .responsive__image__information {
+        padding: 2em;
+        max-width: 100% !important;
+    }
+}
