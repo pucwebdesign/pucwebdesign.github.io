@@ -5,18 +5,32 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Pesquisar</title>
-    <link rel="stylesheet" href="index.css" />
+    <link rel="stylesheet" href="pesquisa.css" />
   </head>
+  
   <body>
     <main>
       <header>
-        <h1>MOVIEX</h1>
+        
+        <a href="/index.html">
+          <h1>MOVIEX</h1>
+        </a>
+        
+        <input type="text" id="input__outline" placeholder="Nome do filme">
         <a href="/pesquisa.html">
-          <button class="button__outline">
+          <button onclick="pesquisarFilmes()" id="button__outline">
             <span>Pesquisar Filmes</span>
           </button>
         </a>
+        
       </header>
     </main>
+    
+    <section class="section__container">
+      <h2 style="margin-bottom: 1em">Filmes populares</h2>
+      <div id="popular__movie" class="grid__three__items"></div>
+    </section>
+    
+    <script defer async src="/pesquisa.js"></script>
   </body>
 </html>

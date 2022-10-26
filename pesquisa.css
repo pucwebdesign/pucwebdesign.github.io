@@ -1,0 +1,121 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;900&display=swap");
+
+body {
+    margin: 0;
+    padding: 0;
+  }
+
+  a {
+    all: unset;
+  }
+  a:hover {
+    cursor: pointer;
+  }
+
+/* DESIGN SYSTEM*/
+
+/* Typography Figma = https://www.figma.com/file/OnYonn8q4Lasd2Eq1rmflo/FILMEX-DESIGN?node-id=0%3A1*/
+
+:root {
+  --primary-color: #343b47;
+  --secundary-color: #fcd63b;
+}
+
+h1 {
+  font-size: 48px;
+  font-weight: 700;
+}
+h2 {
+  font-size: 36px;
+  font-weight: 500;
+}
+h3 {
+  font-size: 18px;
+  font-weight: 300;
+}
+p {
+  font-size: 12px;
+  font-weight: 500;
+}
+span {
+  font-size: 8px;
+  font-weight: 300;
+  display: block;
+}
+
+h1,
+h2,
+h3,
+p,
+span {
+  font-family: "Poppins", sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+button {
+  all: unset;
+  cursor: pointer;
+  width: 60px;
+  padding: 12px;
+  text-align: center;
+  height: 20px;
+}
+
+.button__outline {
+  background: rgba(217, 217, 217, 0.1);
+  color: #fff;
+  transition: 0.7s ease-in-out;
+}
+
+.button__outline:hover {
+  background: rgba(217, 217, 217, 0.7);
+}
+
+.button__filled {
+  background: rgba(217, 217, 217, 0.5);
+  color: #fff;
+  transition: 0.7s ease-in-out;
+}
+
+.button__filled:hover {
+  background: rgba(217, 217, 217, 0.8);
+}
+
+input {
+    all: unset;
+    cursor:auto;
+    width: 200px;
+    padding: 12px;
+    text-align: center;
+    height: 20px;
+}
+  
+.input__outline {
+    background: rgba(217, 217, 217, 0.1);
+    color: #fff;
+    transition: 0.7s ease-in-out;
+  } 
+  
+.input__outline:hover {
+    background: rgba(217, 217, 217, 0.7);
+}
+
+/* ---------------- */
+
+header {
+    display: flex;
+    justify-content: space-between;
+    margin: 2em 4em 0 4em;
+    color: #fff;
+}
+
+body {
+    background-color: black;
+    min-height: 100vh;
+    width: 100%;
+}
+
+
+/* MEDIA QUERY */
+
