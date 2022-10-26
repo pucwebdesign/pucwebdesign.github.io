@@ -91,7 +91,7 @@ button {
 header {
     display: flex;
     justify-content: space-between;
-    margin: 4em 4em 0 4em;
+    margin: 2em 4em 0 4em;
     color: #fff;
     align-items: center;
 }
