@@ -35,7 +35,6 @@
       content="https://giant.gfycat.com/PleasingCornyInvisiblerail.mp4"
     />
   </head>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 
   <body onload="renderLatest()">
     <section id="page__loader">
@@ -52,7 +51,7 @@
           <div class="responsive__container">
             <video
               id="video__source"
-              class="responsive__video"
+              class="responsive__video w__100"
               autoplay
               loop
               muted
@@ -66,9 +65,9 @@
               />
               Your browser does not support the video tag.
             </video>
-            <div class="responsive__video__shadow"></div>
+            <div class="responsive__video__shadow w__100"></div>
             <div id="main__information">
-              <header>
+              <header class="w__100">
                 <h1>MOVIEX</h1>
                 <a href="/pesquisa.html">
                   <button class="button__outline">
@@ -96,7 +95,7 @@
       </section>
       <section class="section__container">
         <h2 style="margin-bottom: 1em">Trailers dos últimos filmes</h2>
-        <div id="latest__movies__trailers"></div>
+        <div id="latest__movies__trailers" class="w__100"></div>
       </section>
       <section class="section__container">
         <h2 style="margin-bottom: 1em">Filmes populares</h2>
@@ -104,10 +103,43 @@
       </section>
     </section>
     <footer>
+      <h1>MOVIEX</h1>
       <span>
-        Video made by: VISUALDON https://www.youtube.com/watch?v=0-W0jMjGmVk
+        Video do interstellar feito por: VISUALDON
+        https://www.youtube.com/watch?v=0-W0jMjGmVk
       </span>
+      <ul>
+        <li>
+          <div class="logo__container logo__red w__100">
+            <img class="logo" src="./public/logo/email.svg" />
+          </div>
+          <span></span>
+          <span></span>
+          <span></span>
+        </li>
+        <li>
+          <div class="logo__container logo__blue w__100">
+            <img class="logo" src="./public/logo/linkedin.svg" />
+          </div>
+          <span></span>
+          <span></span>
+          <span></span>
+        </li>
+        <li>
+          <div class="logo__container logo__blue w__100">
+            <img class="logo" src="./public/logo/facebook.svg" />
+          </div>
+          <span></span>
+          <span></span>
+          <span></span>
+        </li>
+      </ul>
     </footer>
+    <script
+      src="https://code.jquery.com/jquery-3.6.1.js"
+      integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI="
+      crossorigin="anonymous"
+    ></script>
     <script defer async src="index.js"></script>
   </body>
 </html>

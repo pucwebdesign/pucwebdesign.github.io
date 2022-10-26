@@ -85,6 +85,9 @@ button {
 /* ---------------- */
 
 /* MAIN VIDEO PAGE */
+.w__100 {
+  width: 100%;
+}
 
 header {
   display: flex;
@@ -117,7 +120,7 @@ header {
   position: absolute;
   width: 100%;
   height: 100%;
-  box-shadow: inset 0px 0px 102px 102px rgba(0, 0, 0, 0.75);
+  box-shadow: inset 0px 0px 202px 102px rgba(0, 0, 0, 0.75);
   top: 0;
   left: 0;
 }
@@ -126,15 +129,6 @@ header {
   position: relative;
   display: block;
   margin: auto;
-}
-
-.image__gradient {
-  width: 100%;
-  z-index: -1;
-  position: relative;
-  height: 100vh;
-  background: black;
-  opacity: 0.2;
 }
 
 #main__information {
@@ -206,42 +200,156 @@ header {
 
 /* POPULAR MOVIES  SECTION */
 .grid__three__items {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  justify-items: center;
+  display: flex;
+  width: 90%;
+  overflow-x: scroll;
+  gap: 1em;
+  margin-left: 4em;
+  padding-top: 1rem;
+  padding-left: 40px;
+  scroll-behavior: smooth;
+}
+
+.grid__movie__information {
+  position: absolute;
+  top: 0;
+  z-index: 1;
+  visibility: hidden;
+  left: 250px;
+  transition: 0.25s all ease-in-out;
+  padding: 1em;
+}
+
+.grid__movie__information:hover {
+  visibility: visible;
+}
+
+.relative__pos .responsive__video__shadow {
+  box-shadow: -3rem 0 3rem -2rem #000;
+  transition: 0.25s all ease-in-out;
+}
+
+.relative__pos {
+  position: relative;
+  margin-left: -50px;
+  transition: 0.2s all ease-in-out;
+}
+.relative__pos:hover {
+  position: relative;
+  transform: translateY(-1rem) rotate(3deg);
+  margin-right: 50px;
+}
+
+.relative__pos:hover .grid__movie__information {
+  visibility: visible;
+  left: 0px;
+  opacity: 1;
+}
+
+.relative__pos:hover .responsive__video__shadow {
+  box-shadow: inset 0px 80px 40px 20px rgba(0, 0, 0, 0.75) !important;
 }
 
 .grid__three__items img {
   max-width: 300px;
   height: 500px;
   align-items: center;
-}
-
-#popular__movie div {
-  background: #343b47;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  margin: 1em;
   border-radius: 1em;
-  padding: 0.25em 0.5em;
-  max-width: 300px;
 }
 
 #popular__movie p {
   padding: 0 1em;
 }
 
-.grid__movie__information {
-  flex-direction: row !important;
-  justify-content: space-around !important;
-  max-width: 350px;
-  width: 100%;
+/* ---------------- */
+/* FOOTER */
+footer {
+  height: 300px;
+  text-align: center;
+  background: #2c2c2c;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
-.grid__movie__information h3 {
-  max-width: 50%;
+footer ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 60px;
+  padding: 0;
+  gap: 3em;
+  margin-top: 5em;
+}
+
+ul li {
+  width: 50px;
+  height: 100%;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  transform: rotate(-30deg) skew(25deg);
+  transition: 1s all ease-in-out;
+}
+
+.logo__container {
+  height: 100%;
+  z-index: 0;
+  display: flex;
+  justify-content: center;
+  background: white;
+  transition: 1s all ease-in-out;
+}
+
+li span {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: -2;
+  background: white;
+  transition: 1s all ease-in-out;
+}
+
+li:hover .logo__container {
+  transform: translate(30px, -30px);
+  background: #d02d4c;
+  cursor: pointer;
+}
+
+li:hover .logo__blue {
+  background: #0e76a8;
+  cursor: pointer;
+}
+
+li:hover .logo {
+  -webkit-filter: invert(100%); /* Safari/Chrome */
+  filter: invert(100%);
+}
+
+li:hover span:nth-child(1) {
+  transform: translate(30px, -30px);
+  opacity: 0.8;
+}
+
+li:hover span:nth-child(2) {
+  transform: translate(20px, -20px);
+  opacity: 0.6;
+}
+
+li:hover span:nth-child(3) {
+  transform: translate(10px, -10px);
+  opacity: 0.4;
+}
+
+li:hover span:nth-child(4) {
+  opacity: 0.2;
+}
+
+.logo {
+  width: 20px;
 }
 /* ---------------- */
 
@@ -263,12 +371,13 @@ header {
     max-height: 240px !important;
   }
   #latest__movies__trailers {
-    display: flex;
     justify-content: center;
     align-items: center;
   }
-  .grid__three__items {
-    grid-template-columns: 1fr !important;
+  #popular__movie {
+    padding-left: 0 !important;
+    max-width: 90%;
+    margin-left: 1em !important;
   }
 
   .section__container {
@@ -286,7 +395,6 @@ header {
     height: 480px;
   }
   #latest__movies__trailers {
-    display: flex;
     flex-direction: column !important;
   }
 
