@@ -36,7 +36,7 @@
     />
   </head>
 
-  <body onload="renderLatest()">
+  <body onload="renderAllMovies()">
     <section id="page__loader">
       <div class="lds-ring">
         <div></div>
@@ -44,6 +44,7 @@
         <div></div>
         <div></div>
       </div>
+      <h3>Estamos Carregando seus filmes, aguarde um pouco</h3>
     </section>
     <section id="page__loaded">
       <section id="latest__movies">
@@ -79,9 +80,11 @@
                 <h2>Descubra novos filmes</h2>
                 <h3>Veja trailers, análises e muito mais</h3>
                 <div class="main__button__container">
-                  <button class="button__filled">
-                    <span>Últimos filmes</span>
-                  </button>
+                  <a href="#latest__movies__trailers">
+                    <button class="button__filled">
+                      <span>Últimos filmes</span>
+                    </button>
+                  </a>
                   <a href="/pesquisa.html">
                     <button class="button__outline">
                       <span>Pesquisar Filmes</span>
@@ -94,47 +97,47 @@
         </main>
       </section>
       <section class="section__container">
-        <h2 style="margin-bottom: 1em">Trailers dos últimos filmes</h2>
+        <h3 style="margin-bottom: 1em">Trailers dos últimos filmes</h3>
         <div id="latest__movies__trailers" class="w__100"></div>
       </section>
       <section class="section__container">
-        <h2 style="margin-bottom: 1em">Filmes populares</h2>
+        <h3 style="margin-bottom: 1em">Filmes populares</h3>
         <div id="popular__movie" class="grid__three__items"></div>
       </section>
+      <footer>
+        <h1>MOVIEX</h1>
+        <span>
+          Video do interstellar feito por: VISUALDON
+          https://www.youtube.com/watch?v=0-W0jMjGmVk
+        </span>
+        <ul>
+          <li>
+            <div class="logo__container logo__red w__100">
+              <img class="logo" src="./public/logo/email.svg" />
+            </div>
+            <span></span>
+            <span></span>
+            <span></span>
+          </li>
+          <li>
+            <div class="logo__container logo__blue w__100">
+              <img class="logo" src="./public/logo/linkedin.svg" />
+            </div>
+            <span></span>
+            <span></span>
+            <span></span>
+          </li>
+          <li>
+            <div class="logo__container logo__blue w__100">
+              <img class="logo" src="./public/logo/facebook.svg" />
+            </div>
+            <span></span>
+            <span></span>
+            <span></span>
+          </li>
+        </ul>
+      </footer>
     </section>
-    <footer>
-      <h1>MOVIEX</h1>
-      <span>
-        Video do interstellar feito por: VISUALDON
-        https://www.youtube.com/watch?v=0-W0jMjGmVk
-      </span>
-      <ul>
-        <li>
-          <div class="logo__container logo__red w__100">
-            <img class="logo" src="./public/logo/email.svg" />
-          </div>
-          <span></span>
-          <span></span>
-          <span></span>
-        </li>
-        <li>
-          <div class="logo__container logo__blue w__100">
-            <img class="logo" src="./public/logo/linkedin.svg" />
-          </div>
-          <span></span>
-          <span></span>
-          <span></span>
-        </li>
-        <li>
-          <div class="logo__container logo__blue w__100">
-            <img class="logo" src="./public/logo/facebook.svg" />
-          </div>
-          <span></span>
-          <span></span>
-          <span></span>
-        </li>
-      </ul>
-    </footer>
     <script
       src="https://code.jquery.com/jquery-3.6.1.js"
       integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI="
