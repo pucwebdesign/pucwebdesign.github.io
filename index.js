@@ -121,17 +121,20 @@ const renderAllMovies = async () => {
   const videoTrailerArray = [];
 
   for (let i = 0; i < getNewMovies?.results?.length; i++) {
-    if (i == 0) {
+    if (i == 0 || i == 1) {
       const firstTrailer = await fetchLatestMovies(
-        `${getNewMovies?.results[0].id}/videos`
+        `${getNewMovies?.results[i].id}/videos`
       );
 
-      const iframe = document.createElement("iframe");
-      iframe.setAttribute("id", "main__movie__trailer");
-      iframe.setAttribute("allowfullscreen", "true");
-      iframe.setAttribute("allow", "autoplay");
-      iframe.src = `https://www.youtube.com/embed/${firstTrailer?.results[0]?.key}`;
-      videoContainer.append(iframe);
+      // We had to remove this key manually since it's not working
+      if (firstTrailer?.results[i]?.key !== "InhVSLbZU9w") {
+        const iframe = document.createElement("iframe");
+        iframe.setAttribute("id", "main__movie__trailer");
+        iframe.setAttribute("allowfullscreen", "true");
+        iframe.setAttribute("allow", "autoplay");
+        iframe.src = `https://www.youtube.com/embed/${firstTrailer?.results[0]?.key}`;
+        videoContainer.append(iframe);
+      }
     }
 
     const trailersFromEachMovie = await fetchLatestMovies(
@@ -150,6 +153,9 @@ const renderAllMovies = async () => {
           };
           videoTrailerArray.push(videoTrailerObject);
           break;
+          // We use this break above, because after we fetch the first source
+          // the rest of the payload is useless, so for performance reasons
+          // we "break" it
         }
       }
     }
@@ -192,16 +198,6 @@ const renderAllMovies = async () => {
 
   pageLoaded.classList.remove("hidden");
   pageLoaded.classList.add("not__hidden");
-};
-
-/**
- * This function calculates the mouse position and moves the carousel
- * @param {Number} pixelsToMove Amount of pixels to move according to mouse position
- */
-const moveMoviesCarousel = (pixelsToMove) => {
-  const scroll = $("#popular__movie");
-  const amoutOfMovement = $(scroll).left + pixelsToMove;
-  scroll.animate({ scrollLeft: amoutOfMovement }, 1000);
 };
 
 $("#popular__movie").mousemove(function (event) {
