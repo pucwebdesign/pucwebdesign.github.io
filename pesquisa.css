@@ -54,8 +54,9 @@ span {
 }
 
 .container_movie {
-  text-align: center;
-  position:relative;
+  display: flex;
+  justify-content: center;
+  gap: 2em;
 }
 
 button {
@@ -90,10 +91,7 @@ button {
 input {
     all: unset;
     cursor:auto;
-    float: auto;
-    position: relative;
-    top: 6px;
-    width: 300px;
+    width: 700px;
     padding: 18px;
     text-align: center;
     height: 10px;
