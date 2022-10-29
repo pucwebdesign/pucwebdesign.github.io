@@ -4,8 +4,20 @@ const fetchLatestMovies = async (queryParameter) => {
     { mode: "cors" }
   );
 
-  var post = await getNewMovies.json();
-  return post;
+  const getHomepage = await fetch(
+    `https://api.themoviedb.org/3/movie/${queryParameter}?api_key=58a6af7c57bd237d8c8b737a26bdd1ce&language=en-US&page=1`,
+    { mode: "cors" }
+  );
+
+  const post = await getNewMovies.json();
+  const homepage = await getHomepage.json();
+  let validHome = `https://www.themoviedb.org/movie/${queryParameter}`;
+
+  if (homepage?.homepage) {
+    validHome = homepage?.homepage;
+  }
+
+  return { post, validHome };
 };
 
 const formatDate = (dateToFormat) => {
@@ -19,32 +31,42 @@ const formatDate = (dateToFormat) => {
 
 const getUrlParameter = async () => {
   const movieParam = window.location.search.split("=");
-  const movieInformation = await fetchLatestMovies(movieParam[1]);
-  console.log("MI", movieInformation);
+  const { post: movieInformation, validHome } = await fetchLatestMovies(
+    movieParam[1]
+  );
   //Div principal
   const mainDiv = document.createElement("div");
   mainDiv.classList.add("responsive__image");
-  //img
+  //Img
   const mainImg = document.createElement("img");
   mainImg.setAttribute(
     "src",
     `https://image.tmdb.org/t/p/w500/${movieInformation.poster_path}`
   );
   mainImg.setAttribute("alt", `${movieInformation.title}`);
-  //div info
+  //Div info
   const mainDivInfo = document.createElement("div");
   mainDivInfo.classList.add("responsive__image__information");
-  //title
+  //Title
   const mainTitle = document.createElement("h2");
   mainTitle.innerHTML = movieInformation.title;
-  //description
+  //Description
   const mainDescription = document.createElement("p");
   mainDescription.innerHTML = movieInformation.overview;
-  //date
+  //Date
   const mainDate = document.createElement("span");
   mainDate.innerHTML = formatDate(movieInformation.release_date);
+  //Original homepage
+  const mainHomePageLink = document.createElement("a");
+  mainHomePageLink.href = validHome;
+  mainHomePageLink.setAttribute("target", "_blank");
 
-  mainDivInfo.append(mainTitle, mainDescription, mainDate);
+  const mainHomePageText = document.createElement("span");
+  mainHomePageText.innerHTML = "Acesse o site oficial";
+
+  mainHomePageLink.append(mainHomePageText);
+
+  mainDivInfo.append(mainTitle, mainDescription, mainDate, mainHomePageLink);
   mainDiv.append(mainImg, mainDivInfo);
 
   const container = document.getElementById("main__container");

@@ -1,3 +1,8 @@
+/**
+ * This async function searches and returns to us movies based on the parameters we set
+ * @param {*} queryParameter The dinamic parameter that will be used to search the TMDB API
+ * @returns {object} Object containing movie or movies information
+ */
 const fetchLatestMovies = async (queryParameter) => {
   const getNewMovies = await fetch(
     `https://api.themoviedb.org/3/movie/${queryParameter}?api_key=58a6af7c57bd237d8c8b737a26bdd1ce&language=pt-BR&page=1`,
@@ -8,8 +13,10 @@ const fetchLatestMovies = async (queryParameter) => {
   return post;
 };
 
-const insertVideoInList = () => {};
-
+/**
+ * Javascript function for changing the video when selected
+ * @param {*} videoId The container unique id
+ */
 const changeVideo = (videoId) => {
   // DESELECT SELECTED BUTTON
   const deselectButton = document.getElementsByClassName(
@@ -27,13 +34,23 @@ const changeVideo = (videoId) => {
   iframeElement.pause();
 };
 
+/**
+ * Format date to a PT_BR format
+ * @param {Date} dateToFormat
+ * @returns {String} date in the br format
+ */
 const formatDate = (dateToFormat) => {
-  let data = new Date(dateToFormat);
-  let dataFormatada =
+  const data = new Date(dateToFormat);
+  const dataFormatada =
     data.getDate() + "/" + (data.getMonth() + 1) + "/" + data.getFullYear();
   return dataFormatada;
 };
 
+/**
+ * Function for rendering the popular movies fetched from TMDB API
+ * And inserts directly on the DOM
+ * @param {*} popularList List of movies that are popular on TMBD
+ */
 const renderPopularMovies = (popularList) => {
   for (let i = 0; i < popularList.results.length; i++) {
     // GET REFERENCE DIV
@@ -84,19 +101,14 @@ const renderPopularMovies = (popularList) => {
   }
 };
 
-const renderLatest = async () => {
-  /*
-  Render A lower quality video if necessary
+/**
+ * Render Latest movies from TMBD API
+ */
+const renderAllMovies = async () => {
+  const pageLoaded = document.getElementById("page__loaded");
+  pageLoaded.classList.add("hidden");
 
-  const isMobile = /iPhone|iPod|Android/i.test(navigator.userAgent);
-  if (isMobile) {
-    // https://thumbs.gfycat.com/PleasingCornyInvisiblerail-mobile.mp4
-    const videoSource = document.getElementById("video__source");
-    videoSource.src =
-      "https://thumbs.gfycat.com/PleasingCornyInvisiblerail-mobile.mp4";
-  }
-  */
-
+  // We use the same function to get popular and new movies
   const getNewMovies = await fetchLatestMovies("now_playing");
   const getPopular = await fetchLatestMovies("popular");
 
@@ -109,17 +121,20 @@ const renderLatest = async () => {
   const videoTrailerArray = [];
 
   for (let i = 0; i < getNewMovies?.results?.length; i++) {
-    if (i == 0) {
+    if (i == 0 || i == 1) {
       const firstTrailer = await fetchLatestMovies(
-        `${getNewMovies?.results[0].id}/videos`
+        `${getNewMovies?.results[i].id}/videos`
       );
 
-      const iframe = document.createElement("iframe");
-      iframe.setAttribute("id", "main__movie__trailer");
-      iframe.setAttribute("allowfullscreen", "true");
-      iframe.setAttribute("allow", "autoplay");
-      iframe.src = `https://www.youtube.com/embed/${firstTrailer?.results[0]?.key}`;
-      videoContainer.append(iframe);
+      // We had to remove this key manually since it's not working
+      if (firstTrailer?.results[i]?.key !== "InhVSLbZU9w") {
+        const iframe = document.createElement("iframe");
+        iframe.setAttribute("id", "main__movie__trailer");
+        iframe.setAttribute("allowfullscreen", "true");
+        iframe.setAttribute("allow", "autoplay");
+        iframe.src = `https://www.youtube.com/embed/${firstTrailer?.results[0]?.key}`;
+        videoContainer.append(iframe);
+      }
     }
 
     const trailersFromEachMovie = await fetchLatestMovies(
@@ -128,6 +143,9 @@ const renderLatest = async () => {
 
     if (trailersFromEachMovie?.results) {
       for (let x = 0; x < trailersFromEachMovie?.results?.length; x++) {
+        // We had to remove this key manually since it's not working
+        if (trailersFromEachMovie?.results[x]?.key === "InhVSLbZU9w") break;
+
         if (trailersFromEachMovie?.results[x]?.site === "YouTube") {
           videoTrailerObject = {
             ...getNewMovies?.results[i],
@@ -135,6 +153,9 @@ const renderLatest = async () => {
           };
           videoTrailerArray.push(videoTrailerObject);
           break;
+          // We use this break above, because after we fetch the first source
+          // the rest of the payload is useless, so for performance reasons
+          // we "break" it
         }
       }
     }
@@ -170,12 +191,13 @@ const renderLatest = async () => {
   }
 
   videoContainer.append(latestMoviesList);
-};
 
-const moveMoviesCarousel = (pixelsToMove) => {
-  const scroll = $("#popular__movie");
-  const amoutOfMovement = $(scroll).left + pixelsToMove;
-  scroll.animate({ scrollLeft: amoutOfMovement }, 1000);
+  // REMOVE LOADING WHEN THE PAGE IS LOADED
+  const pageLoader = document.getElementById("page__loader");
+  pageLoader.classList.add("hidden");
+
+  pageLoaded.classList.remove("hidden");
+  pageLoaded.classList.add("not__hidden");
 };
 
 $("#popular__movie").mousemove(function (event) {
