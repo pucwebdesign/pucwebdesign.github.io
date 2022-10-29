@@ -1,5 +1,4 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;900&display=swap");
-
 body {
     margin: 0;
     padding: 0;
@@ -11,11 +10,7 @@ body {
   a:hover {
     cursor: pointer;
   }
-
-/* DESIGN SYSTEM*/
-
-/* Typography Figma = https://www.figma.com/file/OnYonn8q4Lasd2Eq1rmflo/FILMEX-DESIGN?node-id=0%3A1*/
-
+  
 :root {
   --primary-color: #343b47;
   --secundary-color: #fcd63b;
@@ -53,6 +48,16 @@ span {
   padding: 0;
 }
 
+.container_search {
+  padding: 2em;
+  text-align: center;
+}
+
+.container_movie {
+  text-align: center;
+  position:relative;
+}
+
 button {
   all: unset;
   cursor: pointer;
@@ -62,42 +67,45 @@ button {
   height: 20px;
 }
 
-.button__outline {
+#button__outline {
   background: rgba(217, 217, 217, 0.1);
   color: #fff;
   transition: 0.7s ease-in-out;
 }
 
-.button__outline:hover {
+#button__outline:hover {
   background: rgba(217, 217, 217, 0.7);
 }
 
-.button__filled {
+#button__filled {
   background: rgba(217, 217, 217, 0.5);
   color: #fff;
   transition: 0.7s ease-in-out;
 }
 
-.button__filled:hover {
+#button__filled:hover {
   background: rgba(217, 217, 217, 0.8);
 }
 
 input {
     all: unset;
     cursor:auto;
-    width: 200px;
-    padding: 12px;
+    float: auto;
+    position: relative;
+    top: 6px;
+    width: 300px;
+    padding: 18px;
     text-align: center;
-    height: 20px;
+    height: 10px;
 }
   
-.input__outline {
+#input__outline {
     background: rgba(217, 217, 217, 0.1);
     color: #fff;
     transition: 0.7s ease-in-out;
   } 
   
-.input__outline:hover {
+#input__outline:hover {
     background: rgba(217, 217, 217, 0.7);
 }
 
@@ -116,6 +124,97 @@ body {
     width: 100%;
 }
 
+/* MOVIES */
+.section__container {
+  min-height: 30vh;
+  background: black;
+  color: #fff;
+  padding: 4em;
+}
 
-/* MEDIA QUERY */
+#popular__movie p {
+  padding: 0 1em;
+}
 
+.grid__three__items {
+  display: flex;
+  width: 90%;
+  overflow-x: scroll;
+  gap: 1em;
+  margin-left: 4em;
+  padding-top: 1rem;
+  padding-left: 40px;
+  scroll-behavior: smooth;
+}
+
+.grid__three__items img {
+  max-width: 300px;
+  height: 500px;
+  align-items: center;
+  border-radius: 1em;
+}
+
+.relative__pos .responsive__video__shadow {
+  box-shadow: -3rem 0 3rem -2rem #000;
+  transition: 0.25s all ease-in-out;
+}
+
+.relative__pos {
+  position: relative;
+  margin-left: -50px;
+  transition: 0.2s all ease-in-out;
+}
+
+.relative__pos:hover {
+  position: relative;
+  transform: translateY(-1rem) rotate(3deg);
+  margin-right: 50px;
+}
+
+.relative__pos:hover .grid__movie__information {
+  visibility: visible;
+  left: 0px;
+  opacity: 1;
+}
+
+.relative__pos:hover .responsive__video__shadow {
+  box-shadow: inset 0px 80px 40px 20px rgba(0, 0, 0, 0.75) !important;
+}
+
+.grid__movie__information {
+  position: absolute;
+  top: 0;
+  z-index: 1;
+  visibility: hidden;
+  left: 250px;
+  transition: 0.25s all ease-in-out;
+  padding: 1em;
+}
+
+.grid__movie__information:hover {
+  visibility: visible;
+}
+
+.relative__pos:hover .grid__movie__information {
+  visibility: visible;
+  left: 0px;
+  opacity: 1;
+}
+
+.responsive__video__shadow {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  box-shadow: inset 0px 0px 202px 102px rgba(0, 0, 0, 0.75);
+  top: 0;
+  left: 0;
+}
+
+.relative__pos .responsive__video__shadow {
+  box-shadow: -3rem 0 3rem -2rem #000;
+  transition: 0.25s all ease-in-out;
+}
+
+.relative__pos:hover .responsive__video__shadow {
+  box-shadow: inset 0px 80px 40px 20px rgba(0, 0, 0, 0.75) !important;
+}

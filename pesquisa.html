@@ -7,30 +7,31 @@
     <title>Pesquisar</title>
     <link rel="stylesheet" href="pesquisa.css" />
   </head>
-  
   <body>
     <main>
       <header>
-        
         <a href="/index.html">
           <h1>MOVIEX</h1>
         </a>
-        
-        <input type="text" id="input__outline" placeholder="Nome do filme">
-        <a href="/pesquisa.html">
-          <button onclick="pesquisarFilmes()" id="button__outline">
+      </header>
+      <div class="container_search">
+        <div class="container_movie">
+          <input type="text" id="input__outline" placeholder="Nome do filme">
+          <button id="button__outline" onclick="pesquisarFilmes()">
             <span>Pesquisar Filmes</span>
           </button>
-        </a>
-        
-      </header>
+        </div>
+      </div>
     </main>
-    
     <section class="section__container">
       <h2 style="margin-bottom: 1em">Filmes populares</h2>
       <div id="popular__movie" class="grid__three__items"></div>
     </section>
-    
+    <script>
+      src="https://code.jquery.com/jquery-3.6.1.js"
+      integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI="
+      crossorigin="anonymous"
+    </script>
     <script defer async src="/pesquisa.js"></script>
   </body>
 </html>
