@@ -451,6 +451,14 @@ li:hover span:nth-child(4) {
   .section__container {
     padding: 1em;
   }
+
+  .relative__pos:hover {
+    transform: translateY(-0.1rem) rotate(3deg) !important;
+  }
+
+  .grid__movie__information {
+    margin-left: 2em;
+  }
 }
 
 @media only screen and (max-width: 1200px) {
