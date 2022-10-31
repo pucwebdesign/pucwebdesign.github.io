@@ -1,24 +1,27 @@
 const fetchLatestMovies = async (queryParameter) => {
-    const getNewMovies = await fetch(
-      `https://api.themoviedb.org/3/search/movie?api_key=58a6af7c57bd237d8c8b737a26bdd1ce&query=${queryParameter}&language=pt-BR`,
-      { mode: "cors" }
-    );
-    const post = await getNewMovies.json();
-    return post;
+  const getNewMovies = await fetch(
+    `https://api.themoviedb.org/3/search/movie?api_key=58a6af7c57bd237d8c8b737a26bdd1ce&query=${queryParameter}&language=pt-BR`,
+    { mode: "cors" }
+  );
+  const post = await getNewMovies.json();
+  return post;
 };
 
 const formatDate = (dateToFormat) => {
-    const data = new Date(dateToFormat);
-    const dataFormatada =
-        data.getDate() + "/" + (data.getMonth() + 1) + "/" + data.getFullYear();
-    return dataFormatada;
+  const data = new Date(dateToFormat);
+  const dataFormatada =
+    data.getDate() + "/" + (data.getMonth() + 1) + "/" + data.getFullYear();
+  return dataFormatada;
 };
-  
-const renderPopularMovies = (popularList) => {
-    for (let i = 0; i < popularList.results.length; i++) {
-    // GET REFERENCE DIV
-    const popularDiv = document.getElementById("popular__movie");
 
+const renderPopularMovies = (popularList) => {
+  // GET REFERENCE DIV
+  const popularDiv = document.getElementById("popular__movie");
+
+  // CLEANUP SEARCH
+  popularDiv.innerHTML = "";
+
+  for (let i = 0; i < popularList.results.length; i++) {
     // ADD MOVIE POSTER TO DIV
     const movieDiv = document.createElement("div");
     movieDiv.classList.add("relative__pos");
@@ -40,7 +43,7 @@ const renderPopularMovies = (popularList) => {
     // ADD MOVIE DATE
     const movieDate = document.createElement("span");
     movieDate.innerHTML = `${formatDate(
-        new Date(popularList.results[i]?.release_date)
+      new Date(popularList.results[i]?.release_date)
     )}`;
 
     gridMovieInfo.append(movieDate);
@@ -54,40 +57,36 @@ const renderPopularMovies = (popularList) => {
     // LINK TO DETAILS PAGE
     const anchorToAnotherPage = document.createElement("a");
     anchorToAnotherPage.setAttribute(
-        "href",
-        `/detalhes.html?movie=${popularList.results[i]?.id}`
+      "href",
+      `/detalhes.html?movie=${popularList.results[i]?.id}`
     );
 
     anchorToAnotherPage.append(movieDiv);
     // ADD ANOTHER DIV TO THE REFERENCE
     popularDiv.append(anchorToAnotherPage);
-    }
+  }
 };
 
 const pesquisarFilmes = async () => {
-    const inputValue = document.getElementById("input__outline").value;
-    const movie = await fetchLatestMovies(inputValue);
-    console.log("movie", movie);
-    renderPopularMovies(movie);
-}
-
-const moveMoviesCarousel = (pixelsToMove) => {
-    const scroll = $("#popular__movie");
-    const amoutOfMovement = $(scroll).left + pixelsToMove;
-    scroll.animate({ scrollLeft: amoutOfMovement }, 1000);
+  const inputValue = document.getElementById("input__outline").value;
+  const movie = await fetchLatestMovies(inputValue);
+  console.log("movie", movie);
+  renderPopularMovies(movie);
 };
-  
-$("#popular__movie").mousemove(function (event) {
+
+$(document).ready(function () {
+  $("#popular__movie").mousemove(function (event) {
     //Check if we're a desktop
     if (window.matchMedia("(min-width: 767px)").matches) {
       const x = event.clientX;
       const left = $("#popular__movie").scrollLeft();
-      const leftContainer = $("#popular__movie");  
-  
+      const leftContainer = $("#popular__movie");
+
       if (x > leftContainer.width() - 20) {
         $("#popular__movie").scrollLeft(left + 200);
       } else if (x < 200) {
         $("#popular__movie").scrollLeft(left - 200);
       }
     }
+  });
 });
