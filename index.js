@@ -127,7 +127,10 @@ const renderAllMovies = async () => {
       );
 
       // We had to remove this key manually since it's not working
-      if (firstTrailer?.results[i]?.key !== "InhVSLbZU9w") {
+      if (
+        firstTrailer?.results[i]?.key !== "InhVSLbZU9w" &&
+        firstTrailer?.results[i]?.key
+      ) {
         const iframe = document.createElement("iframe");
         iframe.setAttribute("id", "main__movie__trailer");
         iframe.setAttribute("allowfullscreen", "true");
