@@ -10,6 +10,7 @@
 <li>DESIGN SYSTEM:<a href="https://www.figma.com/file/OnYonn8q4Lasd2Eq1rmflo/FILMEX-DESIGN?node-id=0%3A1" target="_blank">FIGMA</a></li>
 <li>Modelo ágil: <a href="https://trello.com/b/lYmRjNf6/filmex" target="_blank">KANBAN</a></li>
 <li>DEPLOY POR MEIO DO GITHUB PAGES https://pucwebdesign.github.io/</li>
+<li>GITFLOW</li>
 </ul>
 
 <h2>Como Rodar</h2>
