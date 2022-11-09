@@ -121,16 +121,13 @@ const renderAllMovies = async () => {
   const videoTrailerArray = [];
 
   for (let i = 0; i < getNewMovies?.results?.length; i++) {
-    if (i == 0 || i == 1) {
+    if (i == 0) {
       const firstTrailer = await fetchLatestMovies(
         `${getNewMovies?.results[i].id}/videos`
       );
 
       // We had to remove this key manually since it's not working
-      if (
-        firstTrailer?.results[i]?.key !== "InhVSLbZU9w" &&
-        firstTrailer?.results[i]?.key
-      ) {
+      if (firstTrailer?.results[i]?.key) {
         const iframe = document.createElement("iframe");
         iframe.setAttribute("id", "main__movie__trailer");
         iframe.setAttribute("allowfullscreen", "true");
@@ -147,7 +144,6 @@ const renderAllMovies = async () => {
     if (trailersFromEachMovie?.results) {
       for (let x = 0; x < trailersFromEachMovie?.results?.length; x++) {
         // We had to remove this key manually since it's not working
-        if (trailersFromEachMovie?.results[x]?.key === "InhVSLbZU9w") break;
 
         if (trailersFromEachMovie?.results[x]?.site === "YouTube") {
           videoTrailerObject = {
